@@ -1,5 +1,6 @@
 var UserController = require('../controllers/UserController');
 var SettingsController = require('../controllers/SettingsController');
+var EventController = require('../controllers/EventController');
 
 var request = require('request');
 
@@ -110,6 +111,33 @@ module.exports = function(router) {
   /**
    *  API!
    */
+
+
+  // ---------------------------------------------
+  // Events
+  // ---------------------------------------------
+
+  router.get('/events', function(req, res){
+    var query = req.query;
+      EventController.getAll(defaultResponse(req, res));
+  });
+
+  router.post('/events',
+    function(req, res, next){
+      // Register with an email and password
+      var name = "testing name";
+      var description = "test description";
+
+      EventController.createEvent(name, description,
+        function(err, event){
+          if (err){
+            return res.status(400).send(err);
+          }
+          return res.json(event);
+      });
+  });
+
+
 
   // ---------------------------------------------
   // Users
