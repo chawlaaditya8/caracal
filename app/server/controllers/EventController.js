@@ -18,11 +18,12 @@ EventController.getAll = function(callback) {
     Event.find({}, callback);
 };
 
-EventController.createEvent = function(name, description, callback) {
+EventController.createEvent = function(name, description, owner,  callback) {
             // Make a new event
             var u = new Event();
             u.name = name;
-            u.description = Event.description;
+            u.description = description;
+            u.owner = owner;
             u.save(function(err) {
                 if (err) {
                     return callback(err);
