@@ -14,7 +14,7 @@ var owner = [{
 }];
 
 var schema = new mongoose.Schema({
-  name: {
+  title: {
     type: String,
     min: 1,
     max: 100,

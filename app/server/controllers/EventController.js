@@ -18,26 +18,19 @@ EventController.getAll = function(callback) {
     Event.find({}, callback);
 };
 
-EventController.createEvent = function(name, description, owner,  callback) {
+EventController.createEvent = function(event, owner,  callback) {
             // Make a new event
             var u = new Event();
-            u.name = name;
-            u.description = description;
+            u.title = event.title;
+            u.description = event.description;
             u.owner = owner;
             u.save(function(err) {
                 if (err) {
                     return callback(err);
                 } else {
                     // yay! success.
-                    // var token = u.generateAuthToken();
-
-                    // Send over a verification email
-                    // var verificationToken = u.generateEmailVerificationToken();
-                    // Mailer.sendVerificationEmail(email, verificationToken);
-
                     return callback(
                         null, {
-                            // token: token,
                             event: u
                         }
                     );
