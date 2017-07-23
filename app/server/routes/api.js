@@ -120,6 +120,15 @@ module.exports = function(router) {
         EventController.getAll(defaultResponse(req, res));
     });
 
+    router.get('/myevents', function(req, res) {
+        var query = req.query;
+        var token = getToken(req);
+            UserController.getByToken(token, function(err, user) {
+                owner = user._id;
+                EventController.getMine(owner, defaultResponse(req, res));
+            })
+    });
+
     router.post('/events',
         function(req, res, next) {
 
@@ -127,7 +136,6 @@ module.exports = function(router) {
             var event = req.body.event;
             UserController.getByToken(token, function(err, user) {
                 owner = user._id;
-
                 EventController.createEvent(event, owner,
                     function(err, event) {
                         if (err) {

@@ -15,7 +15,13 @@ var EventController = {};
  * @param  {Function} callback args(err, Event)
  */
 EventController.getAll = function(callback) {
-    Event.find({}, callback);
+  Event.find({}, callback);
+};
+
+EventController.getMine = function(owner, callback) {
+  Event.find({
+    owner_id: owner
+  }, callback);
 };
 
 EventController.createEvent = function(event, owner,  callback) {
@@ -23,7 +29,8 @@ EventController.createEvent = function(event, owner,  callback) {
             var u = new Event();
             u.title = event.title;
             u.description = event.description;
-            u.owner = owner;
+            u.owner_id = owner;
+            console.log(u.owner_id)
             u.save(function(err) {
                 if (err) {
                     return callback(err);

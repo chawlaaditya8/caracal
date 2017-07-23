@@ -1,18 +1,6 @@
 var mongoose = require('mongoose');
 var validator = require('validator');
 
-
-var owner = [{
-
-  // Basic info
-  owner_id: {
-    type: String,
-    min: 1,
-    max: 100,
-  }
-
-}];
-
 var schema = new mongoose.Schema({
   title: {
     type: String,
@@ -26,7 +14,11 @@ var schema = new mongoose.Schema({
     max: 300
   },
 
-  owner: owner
+  owner_id: {
+    type: String,
+    min: 1,
+    max: 200,
+  }
 
 });
 
