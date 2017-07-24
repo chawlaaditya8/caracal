@@ -117,6 +117,7 @@ module.exports = function(router) {
 
     router.get('/events', function(req, res) {
         var query = req.query;
+        console.log(req.socket.remoteAddress);
         EventController.getAll(defaultResponse(req, res));
     });
 
