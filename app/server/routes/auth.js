@@ -47,6 +47,8 @@ module.exports = function(router){
             if (err || !user) {
               return res.status(400).send(err);
             }
+            
+            console.log(req.url);
             return res.json({
               token: token,
               user: user

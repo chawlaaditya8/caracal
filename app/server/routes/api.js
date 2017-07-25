@@ -1,6 +1,7 @@
 var UserController = require('../controllers/UserController');
 var SettingsController = require('../controllers/SettingsController');
 var EventController = require('../controllers/EventController');
+var LogsController = require('../controllers/LogsController');
 
 var request = require('request');
 
@@ -101,7 +102,23 @@ module.exports = function(router) {
                     return res.status(500).send(err);
                 }
             } else {
-                return res.json(data);
+                var ip = req.headers['x-forwarded-for'] || 
+                 req.connection.remoteAddress || 
+                 req.socket.remoteAddress ||
+                 req.connection.socket.remoteAddress;
+                var log = {};
+                log.ip = ip;
+                log.method = req.method;
+                log.url = req.url;
+                log.token = req.token ? req.token : null;
+                // log.body = req.body;
+                LogsController.createLog(log,
+                    function(err, log) {
+                        if (err) {
+                            return res.status(400).send(err);
+                        }
+                        return res.json(data);
+                    });
             }
         };
     }
@@ -117,7 +134,6 @@ module.exports = function(router) {
 
     router.get('/events', function(req, res) {
         var query = req.query;
-        console.log(req.socket.remoteAddress);
         EventController.getAll(defaultResponse(req, res));
     });
 
