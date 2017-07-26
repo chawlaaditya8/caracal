@@ -1,0 +1,1 @@
+Documentation of API is [here](https://documenter.getpostman.com/collection/view/746925-c4002baa-3975-0917-e57c-df2759dcad43).
