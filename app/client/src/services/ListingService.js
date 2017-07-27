@@ -23,6 +23,9 @@ angular.module('reg')
         return $http.get(base + 'events');
       },
 
+      getMine: function(){
+        return $http.get(base + 'myevents');
+      }
     };
   }
   ]);

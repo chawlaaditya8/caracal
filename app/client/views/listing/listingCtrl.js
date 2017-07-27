@@ -6,12 +6,10 @@ angular.module('reg')
     'currentUser',
     'settings',
     'Utils',
-    'AuthService',
-    'UserService',
     'ListingService',
     'EVENT_INFO',
     'DASHBOARD',
-    function($rootScope, $scope, $sce, currentUser, settings, Utils, AuthService, UserService, ListingService, DASHBOARD){
+    function($rootScope, $scope, $sce, currentUser, settings, Utils, ListingService, DASHBOARD){
 
       ListingService
         .getAll()
