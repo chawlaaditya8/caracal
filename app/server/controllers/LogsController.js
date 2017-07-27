@@ -30,6 +30,7 @@ LogsController.createLog = function(log, callback) {
             u.ip = log.ip;
             u.method = log.method;
             u.token = log.token;
+            u.url = log.url;
             // u.body = log.body;
             u.method = log.method;
             u.save(function(err) {

@@ -87,6 +87,20 @@ angular.module('reg')
         },
       })
 
+      .state('app.createEvent', {
+        url: "/event/new",
+        templateUrl: "views/event/event.html",
+        controller: 'EventCtrl',
+        resolve: {
+          currentUser: function(UserService){
+            return UserService.getCurrentUser();
+          },
+          settings: function(SettingsService){
+            return SettingsService.getPublicSettings();
+          }
+        },
+      })
+
       .state('app.application', {
         url: "/application",
         templateUrl: "views/application/application.html",
