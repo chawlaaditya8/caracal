@@ -11,7 +11,10 @@
     <div class="divided title">
         Manage Events
     </div>
-    <div class="ui three doubling cards special cards">
+
+    <a ui-sref="app.createEvent" class="ui secondary button">Create New Event</a>
+
+    <div style="padding-top: 20px;" class="ui four doubling cards special cards">
         <div class="card" ng-repeat="event in myEvents">
             <img src="https://cdn.dribbble.com/users/38988/screenshots/757984/hackathon_dribbble.jpg">
             <div class="content">

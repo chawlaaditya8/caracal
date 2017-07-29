@@ -6,15 +6,16 @@ angular.module('reg')
     'settings',
     'Utils',
     'ListingService',
-    function($scope, $http, $state, settings, Utils, ListingService){
+    '$location',
+    function($scope, $http, $state, settings, Utils, ListingService, $location){
       $scope.title = "";
       $scope.description = "";
-      console.log("test from somewhere");
       $scope.createEvent = function() {
         var title = $scope.title;
         var description = $scope.description;
         console.log(title, description);
         ListingService.createEvent(title, description);
+        $location.path('/organize');
       };
 
     }
