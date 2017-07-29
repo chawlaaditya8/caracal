@@ -89,7 +89,7 @@ angular.module('reg')
 
       .state('app.createEvent', {
         url: "/event/new",
-        templateUrl: "views/event/event.html",
+        templateUrl: "views/organize/event/event.html",
         controller: 'EventCtrl',
         resolve: {
           currentUser: function(UserService){

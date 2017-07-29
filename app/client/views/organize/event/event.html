@@ -1,0 +1,24 @@
+<div id="admin" class="page">
+    <div class="divided title">
+        CREATE NEW EVENT
+    </div>
+    <div class="ui green segment" ng-class="{'loading': loading}">
+        <div class="ui header">
+            Basic Details
+        </div>
+        <div class="content">
+            <form class="ui form">
+                <div class="field">
+                    <label>Title</label>
+                    <input ng-model="title" name="title" placeholder="Title" type="text">
+                </div>
+                <div class="field">
+                    <label>Description</label>
+                    <div class="field">
+                        <textarea ng-model="description"></textarea>
+                    </div>
+                    <a class="ui button" ng-click="createEvent()" type="submit">Create Event</a>
+            </form>
+            </div>
+        </div>
+    </div>

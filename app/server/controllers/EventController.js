@@ -24,11 +24,11 @@ EventController.getMine = function(owner, callback) {
   }, callback);
 };
 
-EventController.createEvent = function(event, owner,  callback) {
+EventController.createEvent = function(title, description, owner,  callback) {
             // Make a new event
             var u = new Event();
-            u.title = event.title;
-            u.description = event.description;
+            u.title = title;
+            u.description = description;
             u.owner_id = owner;
             console.log(u.owner_id)
             u.save(function(err) {

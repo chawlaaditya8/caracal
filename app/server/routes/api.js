@@ -152,10 +152,11 @@ module.exports = function(router) {
         function(req, res, next) {
 
             var token = getToken(req);
-            var event = req.body.event;
+            var title = req.body.title;
+            var description = req.body.description;
             UserController.getByToken(token, function(err, user) {
                 owner = user._id;
-                EventController.createEvent(event, owner,
+                EventController.createEvent(title, description, owner,
                     function(err, event) {
                         if (err) {
                             return res.status(400).send(err);
