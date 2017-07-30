@@ -2,25 +2,55 @@
     <div class="divided title">
         Upcoming Hackathons
     </div>
-    <div class="ui three doubling cards special cards">
+    <div class="ui event modal">
+        <i class="close icon"></i>
+        <div class="header">
+            {{selectedEvent.title}}
+        </div>
+        <div class="image content">
+            <div class="ui medium image">
+                <img src="https://cdn.dribbble.com/users/38988/screenshots/757984/hackathon_dribbble.jpg">
+            </div>
+            <div class="description">
+                <i class="marker icon"></i> New Delhi, India
+                <br>
+                <i class="wait icon"></i> 2nd Jan, 12:00 - 4th Jan, 2:00
+                <br> 
+                <br> 
+                {{selectedEvent.description}}
+            </div>
+        </div>
+        <div class="actions">
+            <div class="ui black deny button">
+                Cancel
+            </div>
+            <div class="ui positive button">
+                Apply
+            </div>
+        </div>
+    </div>
+    <div class="ui stackable doubling two cards">
         <div class="card" ng-repeat="event in events">
-           <img src="https://cdn.dribbble.com/users/38988/screenshots/757984/hackathon_dribbble.jpg">
             <div class="content">
-                <a class="header">{{event.title}}</a>
+                <img class="right floated small ui image" src="https://cdn.dribbble.com/users/38988/screenshots/757984/hackathon_dribbble.jpg">
+                <div class="header">
+                    {{event.title}}
+                </div>
                 <div class="meta">
-                    <span class="date">Event in june 2017</span><br/>
-                    
+                    <i class="marker icon"></i> New Delhi, India
+                    <br>
+                    <i class="wait icon"></i> 2nd Jan, 12:00 - 4th Jan, 2:00
+                    <br>
                 </div>
                 <div class="description">
-       {{event.description}}
-      </div>
+                    {{event.description}}
+                </div>
             </div>
             <div class="extra content">
-                <a>
-        <i class="users icon"></i>
-        600 Participants
-      </a><br/><br/>
-      <center><button class="positive ui button">Register Now</button></center>
+                <div class="ui two buttons">
+                    <div class="ui basic green button">Apply</div>
+                    <a ng-click="selectEvent(event)" class="ui basic blue button">Details</a>
+                </div>
             </div>
         </div>
     </div>
