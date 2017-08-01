@@ -64,6 +64,34 @@ module.exports = function(router) {
             });
         });
     }
+    /**
+     * [Events API Only]
+     *
+     * Check that the id param matches the id of event 
+     * creator.
+     *
+     * That, or you're the admin, so you can do whatever you
+     * want I suppose!
+     */
+    function isEventOwnerOrAdmin(req, res, next) {
+        var token = getToken(req);
+        var eventId = req.params.id;
+
+        UserController.getByToken(token, function(err, user) {
+            EventController.getById(eventId, function(err, data){
+                if (err || !user) {
+                    return res.status(500).send(err);
+                }
+
+                if (user._id == data.owner_id || user.admin) {
+                    return next();
+                }
+                return res.status(400).send({
+                    message: 'Token does not match user id.'
+                });
+            });
+        })
+    }
 
     /**
      * Default response to send an error and the data.
@@ -139,6 +167,10 @@ module.exports = function(router) {
         EventController.getAll(defaultResponse(req, res));
     });
 
+    router.get('/event/:id', function(req, res) {
+        EventController.getById(req.params.id, defaultResponse(req, res));
+    });
+
     router.get('/myevents', function(req, res) {
         var query = req.query;
         var token = getToken(req);
@@ -165,6 +197,11 @@ module.exports = function(router) {
                     });
             })
         });
+
+    router.delete('/event/:id', isEventOwnerOrAdmin, function(req, res) {
+        EventController.deleteEvent(req.params.id, defaultResponse(req, res));
+    });
+
 
 
 

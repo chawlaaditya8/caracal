@@ -15,13 +15,16 @@ var EventController = {};
  * @param  {Function} callback args(err, Event)
  */
 EventController.getAll = function(callback) {
-  Event.find({}, callback);
+  Event.find({
+    status: "active"
+  }, callback);
 };
 
 EventController.getMine = function(owner, callback) {
-  Event.find({
-    owner_id: owner
-  }, callback);
+  Event
+  .where('owner_id').gte(owner)
+  .where('status').in(['active', 'inactive'])
+  .exec(callback);
 };
 
 EventController.createEvent = function(title, description, owner,  callback) {
@@ -30,7 +33,7 @@ EventController.createEvent = function(title, description, owner,  callback) {
             u.title = title;
             u.description = description;
             u.owner_id = owner;
-            console.log(u.owner_id)
+            u.status = "inactive";
             u.save(function(err) {
                 if (err) {
                     return callback(err);
@@ -46,5 +49,32 @@ EventController.createEvent = function(title, description, owner,  callback) {
             });
 };
 
+EventController.getById = function (id, callback){
+  Event.findById(id, callback);
+};
+
+EventController.deleteEvent = function (id, callback){
+  Event.findOneAndUpdate({
+      _id: id,
+    },{
+      $set: {
+        status: "deleted"
+      }
+    },
+    callback);
+
+};
+
+EventController.activateEvent = function (id, callback){
+  Event.findOneAndUpdate({
+      _id: id,
+    },{
+      $set: {
+        status: "active"
+      }
+    },
+    callback);
+
+};
 
 module.exports = EventController;

@@ -12,6 +12,13 @@
                     <label>Title</label>
                     <input ng-model="title" name="title" placeholder="Title" type="text">
                 </div>
+                <div ng-if="imgPreview">
+                    <img src="{{imgPreview}}">
+                </div>
+                <div class="field">
+                  <button class="ui button" type="file" ngf-select="uploadFiles($file, $invalidFiles)" accept="image/*" ngf-max-height="1000" ngf-max-size="1MB">
+                    Select File</button>
+                </div>
                 <div class="field">
                     <label>Description</label>
                     <div class="field">

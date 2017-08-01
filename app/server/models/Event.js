@@ -18,6 +18,12 @@ var schema = new mongoose.Schema({
     type: String,
     min: 1,
     max: 200,
+  },
+
+  status: {
+    type: String,
+    min: 1,
+    max: 100,
   }
 
 });
