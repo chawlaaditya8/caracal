@@ -11,13 +11,7 @@ angular.module('reg')
     function($scope, $http, $state, settings, Utils, ListingService, $location, Upload){
       $scope.title = "";
       $scope.description = "";
-      $scope.createEvent = function() {
-        var title = $scope.title;
-        var description = $scope.description;
-        console.log(title, description);
-        ListingService.createEvent(title, description);
-        $location.path('/organize');
-      };
+      $scope.imgPreview = "https://semantic-ui.com/images/wireframe/image.png";
 
     $scope.uploadFiles = function(file, errFiles) {
         $scope.f = file;
@@ -26,23 +20,16 @@ angular.module('reg')
         if (file) {
           $scope.imgPreview = file.$ngfBlobUrl; 
           console.log(file.$ngfBlobUrl);
-            // file.upload = Upload.upload({
-            //     url: 'https://angular-file-upload-cors-srv.appspot.com/upload',
-            //     data: {file: file}
-            // });
-
-            // file.upload.then(function (response) {
-            //     $timeout(function () {
-            //         file.result = response.data;
-            //     });
-            // }, function (response) {
-            //     if (response.status > 0)
-            //         $scope.errorMsg = response.status + ': ' + response.data;
-            // }, function (evt) {
-            //     file.progress = Math.min(100, parseInt(100.0 * 
-            //                              evt.loaded / evt.total));
-            // });
         }   
     }
+    
+      $scope.createEvent = function() {
+        var title = $scope.title;
+        var description = $scope.description;
+        console.log(title, description, $scope.f);
+        ListingService.createEvent(title, description, $scope.f);
+        // $location.path('/organize');
+      };
+
     }
   ]);
