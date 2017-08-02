@@ -20,11 +20,6 @@ angular.module('reg')
         data: {
           requireLogin: false
         },
-        resolve: {
-          'settings': function(SettingsService){
-            return SettingsService.getPublicSettings();
-          }
-        }
       })
       .state('app', {
         views: {
@@ -34,12 +29,6 @@ angular.module('reg')
           'sidebar@app': {
             templateUrl: "views/sidebar/sidebar.html",
             controller: 'SidebarCtrl',
-            resolve: {
-              'settings' : function(SettingsService) {
-                return SettingsService.getPublicSettings();
-              }
-            }
-
           }
         },
         data: {
@@ -53,9 +42,6 @@ angular.module('reg')
         resolve: {
           currentUser: function(UserService){
             return UserService.getCurrentUser();
-          },
-          settings: function(SettingsService){
-            return SettingsService.getPublicSettings();
           }
         },
       })
@@ -66,9 +52,6 @@ angular.module('reg')
         resolve: {
           currentUser: function(UserService){
             return UserService.getCurrentUser();
-          },
-          settings: function(SettingsService){
-            return SettingsService.getPublicSettings();
           }
         },
       })
@@ -80,9 +63,6 @@ angular.module('reg')
         resolve: {
           currentUser: function(UserService){
             return UserService.getCurrentUser();
-          },
-          settings: function(SettingsService){
-            return SettingsService.getPublicSettings();
           }
         },
       })
@@ -94,9 +74,6 @@ angular.module('reg')
         resolve: {
           currentUser: function(UserService){
             return UserService.getCurrentUser();
-          },
-          settings: function(SettingsService){
-            return SettingsService.getPublicSettings();
           }
         },
       })
@@ -108,9 +85,6 @@ angular.module('reg')
         resolve: {
           currentUser: function(UserService){
             return UserService.getCurrentUser();
-          },
-          settings: function(SettingsService){
-            return SettingsService.getPublicSettings();
           }
         }
       })
@@ -134,9 +108,6 @@ angular.module('reg')
         resolve: {
           currentUser: function(UserService){
             return UserService.getCurrentUser();
-          },
-          settings: function(SettingsService){
-            return SettingsService.getPublicSettings();
           }
         }
       })
