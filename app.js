@@ -10,8 +10,10 @@ var morgan          = require('morgan');
 var cookieParser    = require('cookie-parser');
 
 var mongoose        = require('mongoose');
+mongoose.Promise = global.Promise;
+mongoose.connect('mongodb://chawlaaditya8:abcd9876@ds059654.mlab.com:59654/chawlaaditya');
 var port            = process.env.PORT || 3000;
-var database        = "mongodb://chawlaaditya8:abcd9876@ds059654.mlab.com:59654/chawlaaditya";
+// var database        = "mongodb://localhost:27017";
 
 var settingsConfig  = require('./config/settings');
 var adminConfig     = require('./config/admin');
@@ -19,7 +21,7 @@ var adminConfig     = require('./config/admin');
 var app             = express();
 
 // Connect to mongodb
-mongoose.connect(database);
+// mongoose.connect(database);
 
 app.use(morgan('dev'));
 app.use(cookieParser());
