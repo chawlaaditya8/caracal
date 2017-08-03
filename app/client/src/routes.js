@@ -87,6 +87,21 @@ angular.module('reg')
         },
       })
 
+      //597f78694b6b8111dc52d4ce
+        .state('app.invite', {
+        url: "/invite/597f78694b6b8111dc52d4ce",
+        templateUrl: "views/listing/listing.html",
+        controller: 'ListingCtrl',
+        resolve: {
+          currentUser: function(UserService){
+            return UserService.getCurrentUser();
+          },
+          settings: function(SettingsService){
+            return SettingsService.getPublicSettings();
+          }
+        },
+      })
+
       .state('app.createEvent', {
         url: "/event/new",
         templateUrl: "views/organize/event/event.html",
