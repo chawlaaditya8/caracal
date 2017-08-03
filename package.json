@@ -24,7 +24,6 @@
     "request": "^2.60.0",
     "underscore": "^1.8.3",
     "validator": "^3.40.1"
-
   },
   "scripts": {
     "start": "node app.js",

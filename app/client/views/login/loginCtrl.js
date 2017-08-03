@@ -3,9 +3,14 @@ angular.module('reg')
     '$scope',
     '$http',
     '$state',
+    'settings',
     'Utils',
     'AuthService',
-    function($scope, $http, $state, Utils, AuthService){
+    function($scope, $http, $state, settings, Utils, AuthService){
+
+      // Is registration open?
+      var Settings = settings.data;
+      $scope.regIsOpen = Utils.isRegOpen(Settings);
 
       // Start state for login
       $scope.loginState = 'login';

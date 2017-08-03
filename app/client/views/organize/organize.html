@@ -5,31 +5,27 @@
 
     <a ui-sref="app.createEvent" class="ui secondary button">Create New Event</a>
 
-    <div class="ui stackable doubling two cards" style="margin-top: 20px;">
+    <div style="padding-top: 20px;" class="ui four doubling cards special cards">
         <div class="card" ng-repeat="event in myEvents">
+            <img src="https://cdn.dribbble.com/users/38988/screenshots/757984/hackathon_dribbble.jpg">
             <div class="content">
-                <img class="right floated small ui image" src="https://scontent.fdel5-1.fna.fbcdn.net/v/t31.0-8/19467970_463868020615217_4482543735561816372_o.png?oh=956cfd4f53c3f32c9a2f0439ad95ad5d&oe=59EFC0AA">
-                <div class="header">
-                    {{event.title}}
-                </div>
+                <a href="singleEvent/{{event._id}}" class="header">{{event.title}}</a>
                 <div class="meta">
-                    <i class="marker icon"></i> New Delhi, India
-                    <br>
-                    <i class="wait icon"></i> 2nd Jan, 12:00 - 4th Jan, 2:00
-                    <br>
+                    <span class="date">Event in june 2017</span>
+                    <br/>
                 </div>
                 <div class="description">
                     {{event.description}}
                 </div>
             </div>
             <div class="extra content">
-                <div class="ui two buttons">
-                    <div class="ui basic green button">Apply</div>
-                    <a ng-click="selectEvent(event)" class="ui basic blue button">Details</a>
-                </div>
+                <a>
+                  <i class="users icon"></i>600 Participants
+                </a>
             </div>
         </div>
     </div>
+</div>
 <div ng-if="!myEvents.length>0" class="middle aligned">
     <img class="ui centered large image" src="assets/images/caracal.jpg">
     <center style="font-size: 24px;">

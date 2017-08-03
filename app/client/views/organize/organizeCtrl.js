@@ -4,11 +4,12 @@ angular.module('reg')
     '$scope',
     '$sce',
     'currentUser',
+    'settings',
     'Utils',
     'ListingService',
     'EVENT_INFO',
     'DASHBOARD',
-    function($rootScope, $scope, $sce, currentUser, Utils, ListingService, DASHBOARD){
+    function($rootScope, $scope, $sce, currentUser, settings, Utils, ListingService, DASHBOARD){
       ListingService
       .getMine()
       .success(function(data){
