@@ -24,6 +24,20 @@ angular.module('reg')
           title: title,
           description: description
         })
+      },
+
+      modifyEvent: function(temptitle, tempdescription, title, description){
+          $http.delete(base + 'events', {
+          title: temptitle,
+          description: tempdescription
+        });
+
+          return $http.post(base + 'events', {
+          title: title,
+          description: description
+        })
+
+
       }
     };
   }

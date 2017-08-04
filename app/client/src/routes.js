@@ -115,6 +115,20 @@ angular.module('reg')
         },
       })
 
+      .state('app.editEvent', {
+        url: "/event/edit",
+        templateUrl: "views/organize/event/editEvent/editEvent.html",
+        controller: 'editEventCtrl',
+        resolve: {
+          currentUser: function(UserService){
+            return UserService.getCurrentUser();
+          },
+          settings: function(SettingsService){
+            return SettingsService.getPublicSettings();
+          }
+        },
+      })
+
       .state('app.application', {
         url: "/application",
         templateUrl: "views/application/application.html",

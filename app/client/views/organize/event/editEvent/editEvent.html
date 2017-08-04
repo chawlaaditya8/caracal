@@ -1,0 +1,28 @@
+<div id="admin" class="page">
+    <div class="divided title">
+        EDIT EVENT
+    </div>
+    <div class="ui green segment" ng-class="{'loading': loading}">
+        <div class="ui header">
+            Basic Details
+        </div>
+        <div class="content">
+            <form class="ui form">
+                <div class="field">
+                    <label>Title</label>
+                    <input ng-model="title" name="title" placeholder="Title" type="text">
+                </div>
+                <div class="field">
+                    <label>Image</label>
+                    <img style="cursor: pointer;" type="file" ngf-select="uploadFiles($file, $invalidFiles)" accept="image/*" ngf-max-height="1000" ngf-max-size="1MB" class="ui medium image" src="{{imgPreview}}">
+                </div>
+                <div class="field">
+                    <label>Description</label>
+                    <div class="field">
+                        <textarea ng-model="description"></textarea>
+                    </div>
+                    <a class="ui button" ng-click="modifyEvent()" type="submit">Save Changes</a>
+            </form>
+            </div>
+        </div>
+    </div>
