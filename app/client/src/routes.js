@@ -87,9 +87,8 @@ angular.module('reg')
         },
       })
 
-      //597f78694b6b8111dc52d4ce
-        .state('app.invite', {
-        url: "/invite/597f78694b6b8111dc52d4ce",
+      .state('app.singleListing', {
+        url: "/listing/:id",
         templateUrl: "views/listing/listing.html",
         controller: 'ListingCtrl',
         resolve: {

@@ -28,7 +28,7 @@ angular.module('reg')
         var description = $scope.description;
         console.log(title, description, $scope.f);
         ListingService.createEvent(title, description, $scope.f);
-        // $location.path('/organize');
+        $location.path('/organize');
       };
 
     }

@@ -12,6 +12,10 @@ angular.module('reg')
         return $http.get(base + 'events');
       },
 
+      getIt: function(id){
+        return $http.get(base + 'event/' + id);
+      },
+
       getMine: function(){
         return $http.get(base + 'myevents');
       },
