@@ -4,31 +4,17 @@ angular.module('reg')
     '$scope',
     '$sce',
     'currentUser',
-    'settings',
     'Utils',
     'AuthService',
     'UserService',
     'EVENT_INFO',
     'DASHBOARD',
-    function($rootScope, $scope, $sce, currentUser, settings, Utils, AuthService, UserService, DASHBOARD){
-      var Settings = settings.data;
+    function($rootScope, $scope, $sce, currentUser, Utils, AuthService, UserService, DASHBOARD){
       var user = currentUser.data;
       $scope.user = user;
 
       $scope.DASHBOARD = DASHBOARD;
       
-      for (var msg in $scope.DASHBOARD) {
-        if ($scope.DASHBOARD[msg].includes('[APP_DEADLINE]')) {
-          $scope.DASHBOARD[msg] = $scope.DASHBOARD[msg].replace('[APP_DEADLINE]', Utils.formatTime(Settings.timeClose));
-        }
-        if ($scope.DASHBOARD[msg].includes('[CONFIRM_DEADLINE]')) {
-          $scope.DASHBOARD[msg] = $scope.DASHBOARD[msg].replace('[CONFIRM_DEADLINE]', Utils.formatTime(user.status.confirmBy));
-        }
-      }
-
-      // Is registration open?
-      var regIsOpen = $scope.regIsOpen = Utils.isRegOpen(Settings);
-
       // Is it past the user's confirmation time?
       var pastConfirmation = $scope.pastConfirmation = Utils.isAfter(user.status.confirmBy);
 
@@ -77,12 +63,6 @@ angular.module('reg')
       // -----------------------------------------------------
       // Text!
       // -----------------------------------------------------
-      var converter = new showdown.Converter();
-      $scope.acceptanceText = $sce.trustAsHtml(converter.makeHtml(Settings.acceptanceText));
-      $scope.confirmationText = $sce.trustAsHtml(converter.makeHtml(Settings.confirmationText));
-      $scope.waitlistText = $sce.trustAsHtml(converter.makeHtml(Settings.waitlistText));
-
-
       $scope.declineAdmission = function(){
 
         swal({

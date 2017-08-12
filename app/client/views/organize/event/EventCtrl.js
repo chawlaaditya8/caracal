@@ -3,12 +3,11 @@ angular.module('reg')
     '$scope',
     '$http',
     '$state',
-    'settings',
     'Utils',
     'ListingService',
     '$location',
     'Upload',
-    function($scope, $http, $state, settings, Utils, ListingService, $location, Upload){
+    function($scope, $http, $state, Utils, ListingService, $location, Upload){
       $scope.title = "";
       $scope.description = "";
       $scope.imgPreview = "https://semantic-ui.com/images/wireframe/image.png";

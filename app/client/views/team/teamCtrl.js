@@ -2,16 +2,10 @@ angular.module('reg')
   .controller('TeamCtrl', [
     '$scope',
     'currentUser',
-    'settings',
     'Utils',
     'UserService',
     'TEAM',
-    function($scope, currentUser, settings, Utils, UserService, TEAM){
-      // Get the current user's most recent data.
-      var Settings = settings.data;
-
-      $scope.regIsOpen = Utils.isRegOpen(Settings);
-
+    function($scope, currentUser, Utils, UserService, TEAM){
       $scope.user = currentUser.data;
 
       $scope.TEAM = TEAM;

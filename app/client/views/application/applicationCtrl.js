@@ -5,10 +5,9 @@ angular.module('reg')
     '$state',
     '$http',
     'currentUser',
-    'settings',
     'Session',
     'UserService',
-    function($scope, $rootScope, $state, $http, currentUser, Settings, Session, UserService){
+    function($scope, $rootScope, $state, $http, currentUser, Session, UserService){
 
       // Set up the user
       $scope.user = currentUser.data;
@@ -24,8 +23,6 @@ angular.module('reg')
       // Populate the school dropdown
       populateSchools();
       _setupForm();
-
-      $scope.regIsClosed = Date.now() > Settings.data.timeClose;
 
       /**
        * TODO: JANK WARNING

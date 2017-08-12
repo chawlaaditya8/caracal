@@ -19,6 +19,9 @@ var adminConfig     = require('./config/admin');
 
 var app             = express();
 
+var multiparty = require('connect-multiparty');
+var multipartyMiddleware = multiparty();
+
 // Connect to mongodb
 mongoose.connect(database);
 
@@ -33,6 +36,10 @@ app.use(bodyParser.json());
 app.use(methodOverride());
 
 app.use(express.static(__dirname + '/app/client'));
+
+app.use(multiparty({
+	uploadDir: __dirname + '/temp'
+}));
 
 // Routers =====================================================================
 

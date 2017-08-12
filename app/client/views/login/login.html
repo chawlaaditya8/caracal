@@ -41,7 +41,7 @@
             </form>
           </div>
 
-          <div class="ui form" ng-show="regIsOpen">
+          <div class="ui form">
             <div class="ui divider"></div>
             <div class="field">
               <button id="register"
@@ -85,7 +85,7 @@
 
         <div ng-show="loginState === 'forgot'" class="forgot">
           <a href="#" ng-click="setLoginState('login')">
-            {{regIsOpen ? 'Login or Register' : 'Login'}}
+            Login or Register
           </a>
         </div>
 
